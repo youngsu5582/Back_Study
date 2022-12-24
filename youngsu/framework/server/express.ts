@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-
+import versionRouter from '../../src/controller/version.controller';
+import path from 'path';
 dotenv.config();
 class ExpressApp{
     private readonly _instance : express.Express;
@@ -12,9 +13,14 @@ class ExpressApp{
     }
     init(){
         const app = express();
+
+        app.set('view engine','ejs');
+        app.set('views', path.join(process.cwd(), '/src/public/views'));
+
+
         app.use(express.json());
         app.use(express.urlencoded({extended:false}));
-
+        app.use('/v1',versionRouter);
         return app;
     }
     
