@@ -1,8 +1,22 @@
 import express from 'express';
-export async function index(req:express.Request,res:express.Response){
-    console.log("Post index!");
-    res.status(200).json("hi Postman");
+import { indexDto } from '../dto/index.dto';
+
+class IndexService{
+    constructor(){}
+    private async index(body : indexDto){
+        
+        if(typeof body.id ==='undefined')return {status:'null',body:'null'};
+        else return {status:'ok' , body:body.id};
+    }
+    private async indexPage(){
+        return {status:'ok'};
+    }
+
+    get default(){
+        return {
+            index : this.index,
+            indexPage : this.indexPage,
+        }
+    }
 }
-export async function indexPage(req:express.Request,res:express.Response){
-    res.render('indexPage');
-}
+export {IndexService};

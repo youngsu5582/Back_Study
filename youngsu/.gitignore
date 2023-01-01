@@ -1,2 +1,6 @@
-node_modules/
 .env
+node_modules/*
+build/*
+config.json
+.env
+.package-lock.json

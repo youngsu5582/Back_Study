@@ -1,0 +1,79 @@
+{
+    "index": {
+        "url": "/v1/index",
+        "method": "post",
+        "body":{
+            "id":{
+                "type":"string",
+                "required":true
+            }
+        },
+        "response": {
+            "ok": {
+                "statusCode": 200,
+                "body": {}
+            },
+            "null":{
+                "statusCode":200,
+                "body":{}
+            }
+        }
+   
+    },
+    "indexPage":{
+        "url":"/v1/index",
+        "method":"get",
+        "response":{
+            "ok":{
+                "statusCode":200
+            }
+        }
+    },
+    "register":{
+        "url":"/v1/register",
+        "method":"post",
+        "body":{
+            "email":{
+                "type":"email",
+                "required":true
+            },
+            "password":{
+                "type":"string",
+                "required":true
+            }
+
+        },
+        "response":{
+            "success":{
+                "statusCode":200,
+                "json":{}
+            }
+        }
+    },
+    "jwtLogin":{
+        "url":"/v1/login/jwt",
+        "method":"post",
+        "body":{
+            "email":{
+                "type":"email",
+                "required":true
+            },
+            "password":{
+                "type":"string",
+                "required":true
+            }
+
+        },
+        "response":{
+            "success":{
+                "statusCode":200,
+                "json":{
+                    "token":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+    
+}

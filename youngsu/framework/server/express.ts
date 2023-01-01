@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import versionRouter from '../../src/controller/version.controller';
+
 import path from 'path';
 dotenv.config();
 class ExpressApp{
@@ -20,7 +20,7 @@ class ExpressApp{
 
         app.use(express.json());
         app.use(express.urlencoded({extended:false}));
-        app.use('/v1',versionRouter);
+        
         return app;
     }
     
