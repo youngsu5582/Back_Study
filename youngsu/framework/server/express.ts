@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-
+import cookieParser from 'cookie-parser';
 import path from 'path';
 dotenv.config();
 class ExpressApp{
@@ -17,7 +17,7 @@ class ExpressApp{
         app.set('view engine','ejs');
         app.set('views', path.join(process.cwd(), '/src/public/views'));
 
-
+        app.use(cookieParser());
         app.use(express.json());
         app.use(express.urlencoded({extended:false}));
         

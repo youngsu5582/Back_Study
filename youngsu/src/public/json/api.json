@@ -74,6 +74,27 @@
                 }
             }
         }
+    },
+    "cookie":{
+        "url":"/v1/cookie/",
+        "method":"get"
+    },
+    "cookieLogin":{
+        "url":"/v1/cookie/login",
+        "method":"post",
+        "response":{
+            "success":{
+                "statusCode":200    
+            }
+        }
+    },
+    "cookieModify":{
+        "url":"/v1/cookie/modify",
+        "method":"post"
+    },
+    "cookieWithdrawl":{
+        "url":"/v1/cookie/withdrawl",
+        "method":"post"
     }
     
 }
