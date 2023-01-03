@@ -1,10 +1,14 @@
 import Framework from "../framework";
 import { RouterModule } from "../framework/modules/router";
 import path from 'path';
-import IndexController from "./controller/index.controller";
 import { sequelize } from "./model";
-import AuthController from "./controller/auth.controller";
-import { CookieController } from "./controller/cookie.controller";
+
+
+
+
+import {AuthController,CookieController,FileController,IndexController,LoginController} from './controller';
+
+
 
 sequelize.authenticate().then(()=>{
     console.log("connect Complete!");
@@ -21,6 +25,8 @@ const framework = new Framework(
                         ...(new IndexController()).default,
                         ...(new AuthController()).default,
                         ...(new CookieController()).default,
+                        ...(new FileController()).default,
+                        ...(new LoginController()).default,
                 }})
             }
         }

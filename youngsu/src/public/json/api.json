@@ -50,8 +50,30 @@
             }
         }
     },
+
+    "cookie":{
+        "url":"/v1/cookie/",
+        "method":"get"
+    },
+    "cookieLogin":{
+        "url":"/v1/cookie/login",
+        "method":"post",
+        "response":{
+            "success":{
+                "statusCode":200    
+            }
+        }
+    },
+    "cookieModify":{
+        "url":"/v1/cookie/modify",
+        "method":"post"
+    },
+    "cookieWithdrawl":{
+        "url":"/v1/cookie/withdrawl",
+        "method":"post"
+    },
     "jwtLogin":{
-        "url":"/v1/login/jwt",
+        "url":"/v1/login/jwtLogin",
         "method":"post",
         "body":{
             "email":{
@@ -75,26 +97,16 @@
             }
         }
     },
-    "cookie":{
-        "url":"/v1/cookie/",
-        "method":"get"
-    },
-    "cookieLogin":{
-        "url":"/v1/cookie/login",
-        "method":"post",
-        "response":{
-            "success":{
-                "statusCode":200    
-            }
-        }
-    },
-    "cookieModify":{
-        "url":"/v1/cookie/modify",
+    "jwtVerify":{
+        "url":"/v1/login/jwtVerify",
         "method":"post"
     },
-    "cookieWithdrawl":{
-        "url":"/v1/cookie/withdrawl",
+    "sessionLogin":{
+        "url":"/v1/login/sessionLogin",
+        "method":"post"
+    },
+    "sessionVerify":{
+        "url":"/v1/login/sessionVerify",
         "method":"post"
     }
-    
 }

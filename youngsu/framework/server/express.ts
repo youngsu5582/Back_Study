@@ -2,6 +2,12 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+
+import * as session from 'express-session';
+import Session from 'express-session';
+import {createConnection, createPool}from 'mysql2/promise';
+import MySQLStore from 'express-mysql-session';
+const config = require(path.join(process.cwd(),'config.json'))['development'];
 dotenv.config();
 class ExpressApp{
     private readonly _instance : express.Express;
@@ -13,10 +19,28 @@ class ExpressApp{
     }
     init(){
         const app = express();
+        
+        const pool = createPool({
+            host:config.localhost,
+            user:config.username,
+            database:config.database,
+            password:config.password
+        });
+        
+        
 
+        const store = new (MySQLStore(session))({},pool);
+            
+        
+        app.use(Session({   
+            secret:process.env.SECRET||'Random_Secret_Hash_x*nd23',
+            resave:false,
+            saveUninitialized:false,
+            store: store
+        }))
         app.set('view engine','ejs');
         app.set('views', path.join(process.cwd(), '/src/public/views'));
-
+        
         app.use(cookieParser());
         app.use(express.json());
         app.use(express.urlencoded({extended:false}));

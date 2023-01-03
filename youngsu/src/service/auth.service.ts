@@ -7,6 +7,9 @@ class AuthService{
     constructor(){};
     private async register(dto : UserDto){
         const repository = new UserRepository().default;
+           
+        if(await repository.checkUser(dto.email))
+            return {status:'duplicated',user:'Already Registered'};
             
         const user = await repository.createUser(dto);
         

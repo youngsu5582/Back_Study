@@ -3,8 +3,15 @@ import {UserDto} from '../dto/user.dto';
 
 class UserRepository{
     constructor(){};
-    private async checkUser(){
-        return User.findAll
+    private async findUser(email:string){
+        return User.findOne({
+            where:{
+                email:email
+            }
+        })
+    }
+    private async checkUser(email:string){
+        return Boolean(User.findOne({where:{email:email}}));
     }
     private async createUser(dto : UserDto){
         
@@ -12,8 +19,11 @@ class UserRepository{
         
         return user;
     }
+    
     get default(){
         return{
+        findUser:this.findUser,
+        checkUser:this.checkUser,
         createUser:this.createUser
     }
 }

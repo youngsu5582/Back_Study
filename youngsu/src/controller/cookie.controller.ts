@@ -1,9 +1,8 @@
 import { ResponseData, RouterApiSpec } from "../../framework/modules/router/types";
 import { ControllerDefaultClass } from "../../framework/types";
-import express, { Router } from 'express';
+import express from 'express';
 import { CookieService } from "../service/cookie.service";
-import { REGISTER_INSTANCE } from "ts-node";
-import { formatNamedParameters } from "sequelize/types/utils";
+
 
 class CookieController implements ControllerDefaultClass{
     constructor(){};
@@ -16,7 +15,8 @@ class CookieController implements ControllerDefaultClass{
             const result = await service.login(user);
             
             if(result?.status==='nouser'){
-                res.cookie('user',req.body);
+                
+                res.cookie('user',req.body['user']);
                 res.send('Cookie Set');
             }
             else
@@ -57,4 +57,4 @@ class CookieController implements ControllerDefaultClass{
         }
     }
 }
-export {CookieController};
+export default CookieController;
