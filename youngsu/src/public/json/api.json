@@ -108,5 +108,17 @@
     "sessionVerify":{
         "url":"/v1/login/sessionVerify",
         "method":"post"
+    },
+    "authPage":{
+        "url":"/v1/auth",
+        "method":"get"
+    },
+    "authLogin":{
+        "url":"/v1/auth/login",
+        "method":"get"
+    },
+    "authCallback":{
+        "url":"/v1/auth/callback",
+        "method":"get"
     }
 }

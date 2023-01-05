@@ -55,7 +55,7 @@ class LoginController implements ControllerDefaultClass{
     }
     private socialLogin(api:RouterApiSpec){
         return async(req:express.Request,res : express.Response,next:express.NextFunction)=>{
-            
+                
         }
         
     }

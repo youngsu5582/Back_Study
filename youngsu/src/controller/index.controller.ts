@@ -1,4 +1,4 @@
-import express, { application } from 'express';
+import express, { NextFunction, application } from 'express';
 import {IndexService} from '../service/index.service';
 import { ControllerDefaultClass } from '../../framework/types';
 import { ResponseData, RouterApiSpec } from '../../framework/modules/router/types';
@@ -33,10 +33,17 @@ class IndexController implements ControllerDefaultClass{
             }
         }
     }
+    private authPage(api:RouterApiSpec){
+        return async(req:express.Request,res:express.Response,next:express.NextFunction)=>{
+         
+            res.render('loginPage');
+        }
+    }
     get default(){
         return {
             index : this.index,
-            indexPage : this.indexPage
+            indexPage : this.indexPage,
+            authPage:this.authPage,
         }
     }
 }
