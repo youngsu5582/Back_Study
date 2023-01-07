@@ -21,7 +21,7 @@
 ### 5. Cookie 
 #### Cookie 이용
 #### a. v1/cookie에 GET 방식 보낼시 현재 존재하는 Cookie들을 json 형식으로 받자.
-#### b. v1/cookie/login에 POST 방식 보낼시 user 라는 key를 가진 cookie가 존재하면 Hi user cookie value 를 ,
+#### b. v1/cookie/login에 POST 방식 보낼시 user 라는 key를 가진 cookie가 존재하면 "Hi" + ${user cookie value} 를 ,
 ####    존재하지 않을시 user cookie를 생성해 저장한다.
 #### c. v1/cookie/modify에 POST 방식 보낼시 body에서 key 와 value를 받아서 cookie의 값을 수정한다.
 #### d. v1/cookie/withdrawl에 POST 방식 보낼시 body에서 key를 받아서 cookie를 삭제한다.
