@@ -5,7 +5,8 @@
 ##### User Model 생성 + email 과 password 는 string으로 선언
 ![2](https://user-images.githubusercontent.com/98307410/211160322-b86b4ca1-7a39-4ba4-a731-bcc760dd6f58.PNG)
 
-
+#### 2. session 도 mysql 저장소에 연결
+![2-a](https://user-images.githubusercontent.com/98307410/211186121-85319ab4-b88d-47e8-9499-9ba9fbc11745.PNG)
 
 #### 3. v1/register에 POST 방식 보낼시 body에서 email 과 password를 받아서 User Model 을 만들어서 Insert 한다.
 #### ( ORM 사용하든 원시 Query하든 상관 X )
