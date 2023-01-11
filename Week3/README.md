@@ -15,10 +15,10 @@
 #### /v1/files/csv 에 POST 방식으로 body 에 path를 담아서 보낼 시 , 경로에 있는 csv file을 읽어서 json 으로 Response 한다.
 ![image](https://user-images.githubusercontent.com/98307410/211827451-829df758-b876-40d8-afee-0817094d3f1a.png)
 ### 4. Yaml File
-#### /v1/files/yaml 에 POST 방식으로 body 에 path를 담아서 보낼 시 , 경로에 있는 csv file을 읽어서 json 으로 Response 한다.
+#### /v1/files/yaml 에 POST 방식으로 body 에 path를 담아서 보낼 시 , 경로에 있는 yaml file을 읽어서 json 으로 Response 한다.
 ![image](https://user-images.githubusercontent.com/98307410/211827381-51820118-cba4-4e9a-a57e-0f2d4d963ee6.png)
 
 ### 5. Exif File
 #### 위 방식과 다르게 뒤에 File 형식도 넣는다 - MAC OS는 HPEC 형식 , Android는 JPG 형식 사용 때문
-#### /v1/files/exifOST 방식으로 body 에 path를 담아서 보낼 시 사진 META data 중 make 와 latitude 와 longitude를 담아서 json 으로 Response 한다.
+#### /v1/files/exif POST 방식으로 body 에 path를 담아서 보낼 시 사진 META data 중 make 와 latitude 와 longitude를 담아서 json 으로 Response 한다.
 ![image](https://user-images.githubusercontent.com/98307410/211829196-98cbb3b2-7ed6-4d40-902d-a83a4947ddae.png)
