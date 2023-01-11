@@ -31,7 +31,7 @@ class Framework{
     static get instance(){
         return Framework._instance;
     }
-       
+        
     init(){
        return {
            app : this._app

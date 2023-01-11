@@ -8,15 +8,15 @@ class AuthService{
     constructor(){};
     private async register(dto : UserDto){
         const repository = new UserRepository().default;
-           
         if(await repository.checkUser(dto.email))
-            return {status:'duplicated',user:'Already Registered'};
+            return {status:'duplicated',json:'Already Registered'};
             
         const user = await repository.createUser(dto);
         
-        if(user) return {status:'success',user:user};
-        else return {status:'failure',user:'Not User'};
+        if(user) return {status:'success',json:'Register Complete!'};
+        else return {status:'failure',json:'Not User'};
     }
+    
     private async getToken(code:string){
         const token = await axios({//token
             method: 'POST',
@@ -36,6 +36,7 @@ class AuthService{
         //console.log(data);
         return token['data']['access_token'];
     }
+    
     private async getUser(token:string){
         
         const user = await axios({

@@ -26,9 +26,12 @@ class LoginController implements ControllerDefaultClass{
         return async(req:express.Request,res : express.Response,next:express.NextFunction)=>{
                 const service = new LoginService().default;
                 
-                const token= req.headers['authorization'] as string||undefined;
+                const token= req.headers['authorization'] as string ||undefined;
+                console.log(token);
+                
                 const result = await service.jwtVerify(token);
-                res.end(result);
+                
+                res.send(result);
         }
     }
     private sessionLogin(api:RouterApiSpec){

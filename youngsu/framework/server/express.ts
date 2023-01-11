@@ -5,7 +5,7 @@ import path from 'path';
 
 import * as session from 'express-session';
 import Session from 'express-session';
-import {createConnection, createPool}from 'mysql2/promise';
+import {createPool}from 'mysql2/promise';
 import MySQLStore from 'express-mysql-session';
 const config = require(path.join(process.cwd(),'config.json'))['development'];
 dotenv.config();
@@ -40,6 +40,11 @@ class ExpressApp{
         }))
         app.set('view engine','ejs');
         app.set('views', path.join(process.cwd(), '/src/public/views'));
+        console.log(path.join(process.cwd(),'/src/public/files'));
+        app.use(express.static(path.join(process.cwd(),'/src/public/files')));
+        //app.use(express.static(path.join(process.cwd(), '/src/public')));
+        
+        
         
         app.use(cookieParser());
         app.use(express.json());
@@ -47,10 +52,6 @@ class ExpressApp{
         
         return app;
     }
-    
-
-
-
 }
 
 export default new ExpressApp();
