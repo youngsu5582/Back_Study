@@ -1,0 +1,15 @@
+people:
+  - name: John Doe
+    age: 30
+    address:
+      street: 123 Main St
+      city: Anytown
+      state: XX
+      zip: 12345
+  - name: Jane Smith
+    age: 25
+    address:
+      street: 456 Park Ave
+      city: Anytown
+      state: XX
+      zip: 67890
