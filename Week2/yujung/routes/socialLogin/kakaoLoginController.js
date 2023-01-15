@@ -1,5 +1,6 @@
 const axios = require('axios');
 require('dotenv').config();
+var token;
 
 exports.kakaoLogin = (req, res) => {
     const src = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.KAKAO_REST_API_KEY}&redirect_uri=${process.env.KAKAO_REDIRECT_URI}&response_type=code&scope=profile_nickname,profile_image,account_email`;
@@ -24,9 +25,11 @@ exports.kakaoCallback = async (req, res) => {
 
     var result = await axios.post(url, {}, { params: body, headers: header });
     var { data } = result;
-    const token = data.access_token;
+    token = data.access_token;
+    res.redirect("/v1/auth/kakao/member");
+}
 
-    // 사용자 정보 요청 받기
+exports.kakaoMember = async (req, res) => {
     url = "https://kapi.kakao.com/v2/user/me";
     header = {
         "Authorization": `Bearer ${token}`

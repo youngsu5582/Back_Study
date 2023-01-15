@@ -21,6 +21,7 @@ router.get('/v1/logout', socialLoginController.logout);
 // 카카오
 router.get('/v1/auth/kakao/login', kakaoLoginController.kakaoLogin);
 router.get('/v1/auth/kakao/callback', kakaoLoginController.kakaoCallback);
+router.get('/v1/auth/kakao/member', kakaoLoginController.kakaoMember);
 // 네이버
 router.get('/v1/auth/naver/login', naverLoginController.naverLogin);
 router.get('/v1/auth/naver/callback', naverLoginController.naverCallback);
