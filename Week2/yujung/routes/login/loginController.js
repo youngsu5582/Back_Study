@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-
-const User = require('../models/user')
+const User = require('../../models/user')
 
 const isUser = async (email) => {
     const users = await User.findAll({
@@ -82,7 +81,7 @@ exports.sessionLogin = async (req, res) => {
 
 exports.sessionVerify = (req, res) => {
     if(req.session) {
-        res.send(req.session.email  );
+        res.send(req.session.email);
         return;
     }
 

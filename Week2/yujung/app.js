@@ -5,6 +5,10 @@ const session = require('express-session'); // 세션 관리용 미들웨어
 const MySQLStore = require('express-mysql-session')(session);
 require("dotenv").config(); // .env 파일사용
 
+//html 템플릿 엔진 ejs 설정
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 // sequelize
 // models/index.js의 db.sequelize를 불러옴
 // sync 메서드를 사용해 서버 실행 시 MySQL과 연동
@@ -31,14 +35,12 @@ const sessionOptions = {
     resave: false,
     saveUninitialized: true,
     store: new MySQLStore(options),
-    cookie: {
-        maxAge: process.env.COOKIE_MAXAGE,
-    },
 };
 app.use(session(sessionOptions));
 
 // body-parser
 app.use(express.json());
+//app.use(express.urlencoded({ extended: false }));
 
 // router
 const router = require('./routes/');
@@ -47,4 +49,3 @@ app.use(router);
 http.listen(process.env.PORT, () => {
     console.log(process.env.PORT + '번 포트에서 서버 대기중입니다.');
 });
-
