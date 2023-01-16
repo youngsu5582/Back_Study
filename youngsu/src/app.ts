@@ -7,6 +7,7 @@ import { sequelize } from "./model";
 
 
 import {AuthController,CookieController,FileController,IndexController,LoginController} from './controller';
+import LoggerModule from "../framework/modules/logger";
 
 
 
@@ -21,15 +22,19 @@ const framework = new Framework(
         serverProps:{},
         appProps:{
             modules:{
+                logger: new LoggerModule(),
                 router: new RouterModule({path:path.join(process.cwd(),'src/public/json/api.json'),routeFunctions:{
-                        ...(new IndexController()).default,
-                        ...(new AuthController()).default,
-                        ...(new CookieController()).default,
-                        ...(new FileController()).default,
-                        ...(new LoginController()).default,
-                }})
+                    ...(new IndexController()).default,
+                    ...(new AuthController()).default,
+                    ...(new CookieController()).default,
+                    ...(new FileController()).default,
+                    ...(new LoginController()).default,
+                }}),
+                
             }
         }
+        
     }
 );
 framework.run();
+export {LoggerModule};
