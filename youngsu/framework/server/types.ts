@@ -4,6 +4,8 @@ type ServerType = 'express'|'koa';
 
 interface AppProps {
     modules: Modules;
+    
+    
   }
   
   interface ServerProps {
@@ -12,6 +14,7 @@ interface AppProps {
   
 
 type Modules = {
+    logger: ModuleDefaultClass;
     router: ModuleDefaultClass;
   };
 

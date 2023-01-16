@@ -30,7 +30,7 @@ class RouterModule{
             isRegistered = true;
           }
           
-          console.log(api.url);
+          
           info.push({
             method: api.method.toLocaleUpperCase(),
             url: api.url,

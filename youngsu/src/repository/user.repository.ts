@@ -11,7 +11,9 @@ class UserRepository{
         })
     }
     private async checkUser(email:string){
-        return Boolean(User.findOne({where:{email:email}}));
+        
+        
+        return Boolean(await User.findOne({where:{email:email}}));
     }
     private async createUser(dto : UserDto){
         
