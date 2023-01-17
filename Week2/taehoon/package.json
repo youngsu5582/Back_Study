@@ -22,6 +22,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.2",
     "mysql2": "^2.3.3",
+    "request": "^2.88.2",
     "sequelize": "^6.28.0",
     "sequelize-cli": "^6.5.2"
   },

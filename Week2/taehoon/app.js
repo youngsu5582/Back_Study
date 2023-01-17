@@ -16,6 +16,9 @@ const options = {
     database: "back_study"
 };
 
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 const sessionStore = new MySQLStore(options);
 
 app.use(
@@ -28,20 +31,22 @@ app.use(
     })
 );
 
-
-
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
+const kakaosocialRoutes = require('./routes/kakaosocial');
+const naversocialRoutes = require('./routes/naversocial');
 const socialRoutes = require('./routes/social');
-
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({ secret: process.env.SES_SECRET_KEY, resave: false, saveUninitialized: false }));
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/v1', registerRoutes);
 app.use('/v1/login', loginRoutes);
-app.use(socialRoutes);
+app.use('/v1/auth/kakao', kakaosocialRoutes);
+app.use('/v1/auth/naver', naversocialRoutes);
+app.use('/v1/auth', socialRoutes);
+
 app.use((error, req, res, next) => {
 //    console.log(error);
     const status = error.statuscode || 500;
