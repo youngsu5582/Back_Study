@@ -5,7 +5,6 @@ const { header } = require('express-validator');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 require("dotenv").config();
-const isAuth = require('../middleware/is-auth');
 exports.postSessionLogin = async (req, res, next) => {
     const email = req.body.email;
     try {
@@ -31,6 +30,7 @@ exports.postSessionLogin = async (req, res, next) => {
 exports.postSessionVerify = (req, res, next) => {
     res.status(200).json(req.session.email);
 };
+
 exports.postJwtLogin = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;

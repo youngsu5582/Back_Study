@@ -35,7 +35,6 @@ const versionRoutes = require('./routes/version');
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(session({ secret: process.env.SES_SECRET_KEY, resave: false, saveUninitialized: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/v1', versionRoutes);

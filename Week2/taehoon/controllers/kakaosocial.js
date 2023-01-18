@@ -40,7 +40,7 @@ exports.getTokenInfo = async (req, res, next) => {
         const author = await axios.get(url, { headers: header });
         const email = author.data.kakao_account.email;
         req.session.email = email;
-        console.log(req.session);
+        req.session.name = 'KAKAO';
         res.redirect('/v1/auth');
     } catch (err) {
         if (!err.statusCode) {
