@@ -1,7 +1,7 @@
 const express = require('express');
-const path = require('path');
 
-const router = express.Router()
+
+const router = express.Router();
 const naverLoginController = require('../controllers/naversocial');
 
 router.get('/login', naverLoginController.socialLogin);

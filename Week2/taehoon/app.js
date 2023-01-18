@@ -31,21 +31,15 @@ app.use(
     })
 );
 
-const registerRoutes = require('./routes/register');
-const loginRoutes = require('./routes/login');
-const kakaosocialRoutes = require('./routes/kakaosocial');
-const naversocialRoutes = require('./routes/naversocial');
-const socialRoutes = require('./routes/social');
+const versionRoutes = require('./routes/version');
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({ secret: process.env.SES_SECRET_KEY, resave: false, saveUninitialized: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/v1', registerRoutes);
-app.use('/v1/login', loginRoutes);
-app.use('/v1/auth/kakao', kakaosocialRoutes);
-app.use('/v1/auth/naver', naversocialRoutes);
-app.use('/v1/auth', socialRoutes);
+app.use('/v1', versionRoutes);
+
 
 app.use((error, req, res, next) => {
 //    console.log(error);
