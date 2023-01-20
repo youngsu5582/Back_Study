@@ -1,5 +1,4 @@
 const express = require('express');
-const { cookie } = require('express-validator');
 const path = require('path');
 const router = express.Router();
 const cookieController = require('../controller/cookie');

@@ -6,8 +6,6 @@
 ### 1. JSON File
 #### /v1/files/json 에 POST 방식으로 body 에 path를 담아서 보낼 시 , 경로에 있는 json file을 읽어서 json 으로 Response 한다.
 ![image](https://user-images.githubusercontent.com/98307410/211825836-ec131955-2718-4b60-b800-670b69e75b71.png)
-### 1. Json File
-#### /v1/files/json 에 POST 방식으로 body 에 path를 담아서 보낼 시 , 경로에 있는 json file을 읽어서 json 으로 Response 한다.
 ### 2. Xml File
 #### /v1/files/xml 에 POST 방식으로 body 에 path를 담아서 보낼 시 , 경로에 있는 xml file을 읽어서 json 으로 Response 한다.
 ![image](https://user-images.githubusercontent.com/98307410/211826106-aab97fb3-30a5-4f79-b798-474f8e5482b3.png)
