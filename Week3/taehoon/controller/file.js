@@ -3,7 +3,6 @@ const address = "\\Back_Study\\Week3\\taehoon";
 const convert = require('xml-js');
 const csv = require('csvtojson');
 const yaml = require('js-yaml');
-const jpeg = require('jpeg-js');
 const exifr = require('exifr');
 
 
