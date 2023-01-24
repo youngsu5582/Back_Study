@@ -63,14 +63,13 @@ exports.postCsv = async (req, res, next) => {
         }
         next(err);
     }
-
 };
 
 exports.postYaml = (req, res, next) => {
     const filePath = address + req.body.path + '.yaml';
     //console.log(filePath);
     try {
-        const yamlFile = fs.readFileSync(filePath, 'utf8');
+        const yamlFile = fs.readFileSync(filePath, 'utf-8');
         const jsonObj = yaml.load(yamlFile);
         res.status(200).json({
             status: "ok",
