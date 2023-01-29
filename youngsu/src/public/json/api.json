@@ -151,5 +151,22 @@
     "writeData":{
         "url":"/v1/files/write",
         "method":"post"
+    },
+    "testingUser":{
+        "url":"/v1/testing/testingUser",
+        "method":"post"
+    },
+    "testingPost":{
+        "url":"/v1/testing/testingPost",
+        "method":"post"
+    },
+    
+    "getPost":{
+        "url":"/v1/post/search",
+        "method":"get"
+    },
+    "getPosts":{
+        "url":"/v1/post/list",
+        "method":"get"
     }
 }

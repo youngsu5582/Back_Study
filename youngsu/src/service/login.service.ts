@@ -43,7 +43,7 @@ class LoginService{
     }
 get default(){
     return {
-        jwtLogin : this.jwtLogin,
+        jwtLogin : this.    jwtLogin,
         jwtVerify: this.jwtVerify,
         sessionLogin : this.sessionLogin,
         socialLogin : this.socialLogin
