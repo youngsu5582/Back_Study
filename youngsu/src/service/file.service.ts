@@ -66,4 +66,4 @@ class FileService{
         }
     }
 }
-export {FileService};
+export default FileService;

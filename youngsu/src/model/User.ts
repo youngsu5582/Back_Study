@@ -1,15 +1,18 @@
-import {Sequelize,Model,DataTypes} from 'sequelize';
-import {sequelize} from './index';
+import {Sequelize,Model,DataTypes, Association} from 'sequelize';
+import {Post, sequelize} from './index';
 class User extends Model{
-    public id!:number;
+    public userId!:number;
     public email !:string;
     public password!:string;
+    public static associations: { 
+        post: Association<User,Post>;
+    };
 }
 
 
 User.init(
     {
-        id: {
+        userId: {
             type:DataTypes.INTEGER,
             autoIncrement:true,
             primaryKey:true
@@ -23,7 +26,7 @@ User.init(
             type:DataTypes.STRING,
             allowNull:false,
             
-        }
+        },
     },{
         sequelize,
         modelName:'user'
