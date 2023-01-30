@@ -8,6 +8,8 @@ import { sequelize } from "./model";
 
 import {AuthController,CookieController,FileController,IndexController,LoginController} from './controller';
 import LoggerModule from "../framework/modules/logger";
+import TestingController from "./controller/testing.controller";
+import PostController from "./controller/post.controller";
 
 
 
@@ -24,11 +26,13 @@ const framework = new Framework(
             modules:{
                 logger: new LoggerModule(),
                 router: new RouterModule({path:path.join(process.cwd(),'src/public/json/api.json'),routeFunctions:{
+                    ...(new PostController()).default,
                     ...(new IndexController()).default,
                     ...(new AuthController()).default,
                     ...(new CookieController()).default,
                     ...(new FileController()).default,
                     ...(new LoginController()).default,
+                    ...(new TestingController()).default,
                 }}),
                 
             }

@@ -14,4 +14,5 @@ class CookieService{
         }
     }
 }
-export {CookieService};
+
+export default CookieService; 

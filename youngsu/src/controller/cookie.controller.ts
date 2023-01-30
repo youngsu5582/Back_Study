@@ -1,7 +1,7 @@
 import { ResponseData, RouterApiSpec } from "../../framework/modules/router/types";
 import { ControllerDefaultClass } from "../../framework/types";
 import express from 'express';
-import { CookieService } from "../service/cookie.service";
+import CookieService from "../service/cookie.service";
 
 
 class CookieController implements ControllerDefaultClass{
@@ -10,7 +10,7 @@ class CookieController implements ControllerDefaultClass{
         return async(req:express.Request,res:express.Response,next:express.NextFunction)=>{
             const service = new CookieService().default;
             const responseType:ResponseData = api.response;
-
+            console.log(typeof(req.cookies));
             const user : string = req.cookies['user']||undefined;
             const result = await service.login(user);
             

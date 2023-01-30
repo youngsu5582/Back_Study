@@ -1,7 +1,7 @@
 import { RouterApiSpec } from "../../framework/modules/router/types";
 import { ControllerDefaultClass } from "../../framework/types";
 import * as express from 'express';
-import { FileService } from "../service/file.service";
+import  FileService  from "../service/file.service";
 class FileController implements ControllerDefaultClass{
     constructor(){};
     private readJson(api:RouterApiSpec){
