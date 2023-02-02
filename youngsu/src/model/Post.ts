@@ -1,9 +1,9 @@
-import {Model,DataTypes, Association} from 'sequelize';
-import {User, sequelize,Comment} from './index';
+    import {Model,DataTypes, Association} from 'sequelize';
+    import {User, sequelize,Comment} from './index';
 
-class Post extends Model{
-    public postId !:number;
-    public title !:string;
+    class Post extends Model{
+        public postId !:number;
+        public title !:string;
     public content!:string;
     public userId!:number;
     public date!:Date;
@@ -53,11 +53,10 @@ Post.init(
         like_count:{
             type:DataTypes.INTEGER,
             defaultValue:0,
-        }
+        },
     },{
         sequelize,
         modelName:'post'
     }
 )
-
 export default Post;

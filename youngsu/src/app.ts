@@ -8,9 +8,8 @@ import { sequelize } from "./model";
 
 import {AuthController,CookieController,FileController,IndexController,LoginController} from './controller';
 import LoggerModule from "../framework/modules/logger";
-import TestingController from "./controller/testing.controller";
-import PostController from "./controller/post.controller";
-
+// import TestingController from "./controller/testing.controller";
+// import PostController from "./controller/post.controller";
 
 
 sequelize.authenticate().then(()=>{
@@ -20,7 +19,7 @@ sequelize.authenticate().then(()=>{
     console.error("Error!");
 })
 const framework = new Framework(
-    {
+    {   
         serverProps:{},
         appProps:{
             modules:{
@@ -33,6 +32,8 @@ const framework = new Framework(
                     ...(new FileController()).default,
                     ...(new LoginController()).default,
                     ...(new TestingController()).default,
+                    
+                    
                 }}),
                 
             }

@@ -1,14 +1,15 @@
-import {Sequelize,Model,DataTypes, Association} from 'sequelize';
+import {Model,DataTypes, Association} from 'sequelize';
 import {Post, sequelize} from './index';
 class User extends Model{
+    static associate() {
+        throw new Error('Method not implemented.');
+    }
     public userId!:number;
     public email !:string;
     public password!:string;
-    public static associations: { 
-        post: Association<User,Post>;
-    };
-}
+ 
 
+}
 
 User.init(
     {
@@ -32,5 +33,9 @@ User.init(
         modelName:'user'
     }
 )
+
+
+
+
 
 export default User;

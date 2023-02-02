@@ -168,5 +168,14 @@
     "getPosts":{
         "url":"/v1/post/list",
         "method":"get"
-    }
+    },
+    "follow":{
+        "url":"/v1/user/follow",
+        "method":"post"
+    },
+    "followList":{
+        "url":"/v1/user/follow",
+        "method":"get"
+    },
+    
 }

@@ -19,9 +19,10 @@ class PostService{
     private async getPostwithWriter(writer:string){
         const repository = new PostRepository().default;
         const repo = new UserRepository().default;
-        const id = await repo.findUser(writer);
-        console.log(id?.userId);
-        const data = await repository.findWriter(id?.userId!);
+        const user = await repo.findUser(writer);
+        
+        console.log(user?.userId);
+        const data = await repository.findWriter(user?.userId!);
         return data;
     }
     private async getRecentPosts(count:number){
