@@ -45,6 +45,7 @@ class LoginController implements ControllerDefaultClass{
             const result = await serivce.sessionLogin(body);
             if(result?.status ==='success'){
                 req.session.email = result.body?.email;
+                req.session.uid=result.body?.id;
                 req.session.save();
                 res.send(result.message);
             }
