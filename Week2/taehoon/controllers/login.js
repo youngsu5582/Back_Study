@@ -43,7 +43,7 @@ exports.postJwtLogin = async (req, res, next) => {
             throw error;
         }
         loadedUser = user;
-        //console.log(password, user.password);
+        console.log(password, user.password);
         const isequal = await (email === user.email) && bcrypt.compare(password, user.password);
         if (!isequal) {
             console.log(isequal);

@@ -1,16 +1,13 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+const sequelize = require('./util/database');
 
 const app = express();
 
-
-const fileRoutes = require('./routes/file');
+const versionRoutes = require('./routes/version');
 
 app.use(bodyParser.json());
-app.use('/v1/files', fileRoutes);
-
-
 
 app.use((error, req, res, next) => {
     const status = error.statusCode || 500;
@@ -20,4 +17,16 @@ app.use((error, req, res, next) => {
     })
 });
 
-app.listen(3000);
+app.use('/v1', versionRoutes);
+
+
+
+sequelize
+  .sync()
+  .then(result => {
+    // console.log(result);
+    app.listen(3000);
+  })
+  .catch(err => {
+    console.log(err);
+  });
