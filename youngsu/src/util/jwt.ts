@@ -6,4 +6,4 @@ export async function decode(token : string){
 export async function encode(email:string){
     const secret = process.env.SECRET||'Random_Secret_Hash_x*nd23';
     return jwt.sign(email,secret);
-}
+}   

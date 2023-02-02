@@ -38,6 +38,10 @@ class ExpressApp{
             saveUninitialized:false,
             store: store
         }))
+        app.use((req:express.Request,res:express.Response,next:express.NextFunction)=>{
+            
+            next();
+        })
         app.set('view engine','ejs');
         app.set('views', path.join(process.cwd(), '/src/public/views'));
         console.log(path.join(process.cwd(),'/src/public/files'));

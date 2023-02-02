@@ -32,8 +32,6 @@ class AuthService{
                 code:code,
             })
         })
-        
-        //console.log(data);
         return token['data']['access_token'];
     }
     
