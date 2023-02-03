@@ -28,7 +28,8 @@ class LoginService{
         if(await repository.checkUser(dto.email)){
             const user = await repository.findUser(dto.email);
             if(user?.password===dto.password){
-                return {status:'success',message:'Login Complelte!',body:{'email':dto.email}};
+                
+                return {status:'success',message:'Login Complelte!',body:{'email':dto.email,'id':user?.userId}};
                 
             }
             else{

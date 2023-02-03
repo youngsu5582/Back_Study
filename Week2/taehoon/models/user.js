@@ -1,4 +1,3 @@
-//const { UUID } = require('sequelize'); 몽고DB처럼 id 해쉬값
 const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
