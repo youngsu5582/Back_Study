@@ -4,7 +4,7 @@
 
 ### User Model
 #### Attribute
-name(String) , email(String)
+name(String) , email(String) , phone_number(String)
 
 ### History Model
 #### Attribute
@@ -33,5 +33,11 @@ price(String) , name(String) , seller(String)
 #### 결제 승인이 완료되면 , 회원가입때 등록한 이메일로 메일을 보낸다.
 ![image](https://user-images.githubusercontent.com/98307410/216811797-fc63c968-908d-48f9-be39-83d9154119f4.png)
 
+### 3. /v1/toss/payments에 GET 방식으로 요청을 보낼 시 , Login 한 유저가 결제한 기록들을 파싱하여 출력한다. 
+#### ( Toss /v1/payments/{paymentKey} 사용 )
+![image](https://user-images.githubusercontent.com/98307410/216832183-60f1bd2d-a26e-42be-b68c-6cc10a7c2e11.png)
+
+### 4. /v1/toss/payment/:paymentKey에 GET 방식으로 요청을 보낼 시 , 결제에 대한 정보를 SMS로 보낸다.
+![image](https://user-images.githubusercontent.com/98307410/216832313-d0c99d56-bf05-4512-8506-7589291ca081.png)
 
 
