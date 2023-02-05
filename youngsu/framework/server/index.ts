@@ -1,6 +1,5 @@
 import express from 'express';
 import http from 'http';
-import {Server as SocketServer} from 'socket.io';
 class Server{
     private _server:http.Server|any = null;
     constructor({}){};
@@ -10,7 +9,6 @@ class Server{
     init(app:express.Express){
         const server :http.Server = http.createServer(app);
         const port = process.env.PORT||'3000';
-        const io = new SocketServer(server);
         
         
         

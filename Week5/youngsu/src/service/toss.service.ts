@@ -38,15 +38,47 @@ class TossService{
             product = await repository.selectProduct(id);
         return product;
     }
-    private async Payment(user_id : Types.ObjectId , paymentKey : string){
+    private async payments(user_id : Types.ObjectId){
         const repository = new HistoryRepository().default;
-        const data = repository.getHistory(user_id);
-        
+        const data = await repository.getHistoryWithId(user_id);
+        const paymentKey_array = [];
+        for(let history of data)
+            paymentKey_array.push(history.paymentKey);
+        const result = [];
+        for(let paymentKey of paymentKey_array){
+            const seceret_key:String|undefined = process.env.TOSS_SECRET_KEY||undefined;
+            const data =await axios.get('https://api.tosspayments.com/v1/payments/'+paymentKey,{headers:{
+                     'Content-Type' : 'application/json',
+                     'Authorization' : `Basic ${await base64Encoding(seceret_key!+':')}`
+                 }}).then((result)=>result.data).then((result:any)=>{
+                    
+                    return{
+                        "status":result.status,
+                        "orderName":result.orderName,
+                        "approvedAt":result.approvedAt,
+                        "paymentKey":result.paymentKey
+                    }
+                 })
+            
+            result.push(data);
+        }
+            
+        return result;
+    }
+    private async payment(payment_key:String,user_id:Types.ObjectId){
+        const repository = new HistoryRepository().default;
+        if(await repository.checkHistoryWithId(payment_key,user_id))
+            return await repository.getHistoryWithPaymentKey(payment_key);
+        else
+            return 'Not Correct User!';
+
     }
     get default(){
         return{
             confirm :this.confirm,
             getProduct : this.getProduct,
+            payments : this.payments,
+            payment : this.payment,
         }
     }
 }

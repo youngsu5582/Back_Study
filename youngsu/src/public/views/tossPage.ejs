@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script src="https://js.tosspayments.com/v1/payment"></script>
+  </head>
+  <body>
+    <section>
+      <!-- ... -->
+      
+      <span>판매자 : <%=product.seller%></span><br>
+      <span>가격 : <%= product.price%> 원</span><br>
+      <span>품명 : <%=product.name%> </span>
+      <button id="payment-button"><%=product.price%> 결제하기</button>
+    </section>
+    <input id = "orderId" type="hidden" value= "<%= orderId %>" >
+    <input id = "price" type ="hidden" value= "<%= product.price %>" >
+    <input id = "name" type ="hidden" value= "<%= product.name %>" >
+    <input id = "seller" type ="hidden" value= "<%= product.seller %>" >
+
+    <script>
+      
+      const orderId = document.getElementById('orderId').value;
+      const price = document.getElementById('price').value;
+      const name = document.getElementById('name').value;
+      const seller = document.getElementById('seller').value;
+
+      
+      var clientKey = 'test_ck_LBa5PzR0ArnZjx2jd61rvmYnNeDM'
+      var tossPayments = TossPayments(clientKey)
+      var button = document.getElementById('payment-button') // 결제하기 버튼
+
+      button.addEventListener('click', function () {
+        
+        tossPayments.requestPayment('카드',{
+          amount: price,
+          orderId: orderId,
+          orderName: name,
+          customerName: seller,
+          customerEmail : 'yuyoungsu5582@gmail.com',
+          successUrl: 'http://localhost:5000/v1/toss/success',
+          failUrl: 'http://localhost:5000/v1/toss/fail',
+        })
+        .catch(function (error) {
+          if (error.code === 'USER_CANCEL') {
+            // 결제 고객이 결제창을 닫았을 때 에러 처리
+          } else if (error.code === 'INVALID_CARD_COMPANY') {
+            // 유효하지 않은 카드 코드에 대한 에러 처리
+          }
+        })
+        
+      })
+    </script>
+  </body>
+</html>

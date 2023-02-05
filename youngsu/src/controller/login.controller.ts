@@ -34,26 +34,32 @@ class LoginController implements ControllerDefaultClass{
         }
     }
 
+    // private sessionLogin(api:RouterApiSpec){
+    //     return async(req:express.Request,res : express.Response,next:express.NextFunction)=>{
+    //         const serivce = new LoginService().default;
+    //         const body = req.body;{
+    //         if(req.session.email===body['email']){
+    //             res.send('Already Login!');
+    //         }
+    //         else{
+    //         const result = await serivce.sessionLogin(body);
+    //         if(result?.status ==='success'){
+    //             req.session.email = result.body?.email;
+    //             req.session.uid=result.body?.id;
+    //             req.session.save();
+    //             res.send(result.message);
+    //         }
+    //         else
+    //             res.send(result?.message);
+    //         }
+    //     }
+    // }
+    // }
     private sessionLogin(api:RouterApiSpec){
-        return async(req:express.Request,res : express.Response,next:express.NextFunction)=>{
-            const serivce = new LoginService().default;
-            const body = req.body;{
-            if(req.session.email===body['email']){
-                res.send('Already Login!');
-            }
-            else{
-            const result = await serivce.sessionLogin(body);
-            if(result?.status ==='success'){
-                req.session.email = result.body?.email;
-                req.session.uid=result.body?.id;
-                req.session.save();
-                res.send(result.message);
-            }
-            else
-                res.send(result?.message);
-            }
+        return async(req:express.Request,res:express.Response,next:express.NextFunction)=>{
+            
+            
         }
-    }
     }
     
     private sessionVerify(api:RouterApiSpec){

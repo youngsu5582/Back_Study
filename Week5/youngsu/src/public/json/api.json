@@ -44,5 +44,13 @@
     "loginPage":{
         "url":"/v1/login",
         "method":"get"
+    },
+    "tossPayments":{
+        "url":"/v1/toss/payments",
+        "method":"get"
+    },
+    "tossPayment":{
+        "url":"/v1/toss/payment/:paymentKey",
+        "method":"get"
     }
 }

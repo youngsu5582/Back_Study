@@ -13,8 +13,10 @@ class UserRepository{
     private async findUserUsingId(id:Types.ObjectId){
         return User.findById(id);
     }
+    private async selectPhoneNumberWithId(id:Types.ObjectId){
+        return User.findById(id,{phone_number:1,_id:0});
+    }
     private async createUser(dto : UserDto){
-        
         const user = await User.create({...dto});
             
         return user;
@@ -26,7 +28,8 @@ class UserRepository{
         
         findUser:this.findUser,
         findUserUsingId : this.findUserUsingId,
-        createUser:this.createUser
+        createUser:this.createUser,
+        selectPhoneNumberWithId:this.selectPhoneNumberWithId,
     }
 }
 }

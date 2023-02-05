@@ -1,11 +1,10 @@
-import mongoose, {Schema, Types } from "mongoose";
+import mongoose, {Schema } from "mongoose";
 
 type historyDto = {
     orderId : string;
     orderName : string;
     paymentKey : string;
     totalAmount: number;
-    userId?:Types.ObjectId;
     
     
 }

@@ -1,4 +1,5 @@
 export type UserDto={
-    name:String;
-    email:String;
+    name:string;
+    email:string;
+    phone_number:string;
 }
