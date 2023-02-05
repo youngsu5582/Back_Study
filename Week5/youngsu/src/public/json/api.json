@@ -1,0 +1,48 @@
+{
+
+    "register":{
+        "url":"/v1/register",
+        "method":"post",
+        "body":{
+            "email":{
+                "type":"email",
+                "required":true
+            },
+            "password":{
+                "type":"string",
+                "required":true
+            }
+        },
+        "response":{
+            "success":{
+                "statusCode":200,
+                "json":{}
+            },
+            "duplicated":{
+                "statusCode":200,
+                "json":{}
+            }
+        
+        }
+    },
+    "sessionLogin":{
+        "url":"/v1/login/sessionLogin",
+        "method":"post"
+    },
+    "tossPage":{
+        "url":"/v1/toss",
+        "method":"get"
+    },
+    "tossSuccess":{
+        "url":"/v1/toss/success",
+        "method":"get"
+    },
+    "tossFail":{
+        "url":"/v1/toss/fail",
+        "method":"get"
+    },
+    "loginPage":{
+        "url":"/v1/login",
+        "method":"get"
+    }
+}
