@@ -19,6 +19,7 @@ class IndexController implements ControllerDefaultClass{
     }
     private authPage(api:RouterApiSpec){
         return async(req:express.Request,res:express.Response,next:express.NextFunction)=>{
+            
             if(req.session.email)
                 res.json(req.session.email);
             else
