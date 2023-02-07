@@ -8,7 +8,7 @@ name(String) , email(String) , phone_number(String)
 
 ### History Model
 #### Attribute
-orderId(String) , orderName(String) , paymentKey(String) , totalAmount(Number) , userId(ObjectId , reference : User)
+status(String) , provatedAt(Date) , orderId(String) , orderName(String) , paymentKey(String) , totalAmount(Number) , userId(ObjectId , reference : User)
 ### Product Model
 #### Attribute
 price(String) , name(String) , seller(String)
