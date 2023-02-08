@@ -8,20 +8,27 @@ class AuthController implements ControllerDefaultClass{
     constructor(){};
     
     
+    // private register(api:RouterApiSpec){
+    //     return async(req:express.Request,res:express.Response,next:express.NextFunction)=>{
+            
+    //         const responseType:ResponseData = api.response;
+    //         const service = new AuthService().default;
+    //         const body =req.body;
+    //         const result = await service.register(body);
+            
+    //         const response = responseType[result.status];
+    //         if(result.status==='success')return res.status(response.statusCode).json(result.json);
+    //         else return res.status(response.statusCode).json(result.json);
+    //     }
+    // }
     private register(api:RouterApiSpec){
         return async(req:express.Request,res:express.Response,next:express.NextFunction)=>{
-            
-            const responseType:ResponseData = api.response;
             const service = new AuthService().default;
-            const body =req.body;
-            const result = await service.register(body);
-            
-            const response = responseType[result.status];
-            if(result.status==='success')return res.status(response.statusCode).json(result.json);
-            else return res.status(response.statusCode).json(result.json);
+            const result = service.register(req.body);
+            res.json(result);
         }
-
     }
+
     
     
     private authLogin(api:RouterApiSpec){

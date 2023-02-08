@@ -6,7 +6,7 @@ import path from 'path';
 import * as session from 'express-session';
 import Session from 'express-session';
 import {createPool}from 'mysql2/promise';
-import MySQLStore from 'express-mysql-session';
+import MongoStore from 'connect-mongo';
 const config = require(path.join(process.cwd(),'config.json'))['development'];
 dotenv.config();
 class ExpressApp{
@@ -29,7 +29,7 @@ class ExpressApp{
         
         
 
-        const store = new (MySQLStore(session))({},pool);
+        const store = MongoStore.create({mongoUrl:process.env.MONGOURL});
             
         
         app.use(Session({   

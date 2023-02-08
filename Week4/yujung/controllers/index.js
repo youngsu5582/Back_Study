@@ -7,7 +7,9 @@ exports.testingUser = async (req, res) => {
     const members = new Array();
     const seed = req.body.seed;
 
-    for (let i = 0; i < seed; i++) {
+    faker.seed(seed);
+
+    for (let i = 0; i < 100; i++) {
         // fake data 생성
         const email = faker.internet.email();
         const password = faker.internet.password();
@@ -29,7 +31,9 @@ exports.testingPost = async (req, res) => {
     const posts = new Array();
     const seed = req.body.seed;
 
-    for (let i = 0; i < seed; i++) {
+    faker.seed(seed);
+
+    for (let i = 0; i < 100; i++) {
         // fake data 생성
         const title = faker.hacker.phrase();
         const content = faker.lorem.paragraph();

@@ -160,7 +160,10 @@
         "url":"/v1/testing/testingPost",
         "method":"post"
     },
-    
+    "testingProduct":{
+        "url":"/v1/testing/testingProduct",
+        "method":"post"
+    },
     "getPost":{
         "url":"/v1/post/search",
         "method":"get"
@@ -177,5 +180,16 @@
         "url":"/v1/user/follow",
         "method":"get"
     },
-    
+    "tossPage":{
+        "url":"/v1/toss",
+        "method":"get"
+    },
+    "tossSuccess":{
+        "url":"/v1/toss/success",
+        "method":"get"
+    },
+    "tossFail":{
+        "url":"/v1/toss/fail",
+        "method":"get"
+    }
 }
