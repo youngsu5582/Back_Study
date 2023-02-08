@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+  <title>index</title>
+</head>
+
+<body>
+    <p>판매자 : <%= seller %> </p>
+    <p>가격 : <%= price %> 원 </p>
+    <p>품명 : <%= name %>
+    <button id = "pay-button"><%= price %>원 결제하기</button> </p>
+    <h1><%= orderid %></h1>
+
+    <input type = "hidden" id="seller" value = "<%= seller %>">
+    <input type = "hidden" id="price" value = "<%= price %>">
+    <input type = "hidden" id="name" value = "<%= name %>">
+    <input type = "hidden" id="orderid" value = "<%= orderid %>">
+
+    <script>
+    
+    const clientKey = 'test_ck_4vZnjEJeQVxgXqyvJ4b3PmOoBN0k';
+    const tossPayments = TossPayments(clientKey);
+
+    var seller = document.getElementById('seller').value;
+    var price = document.getElementById('price').value;
+    var name = document.getElementById('name').value;
+    var orderid = document.getElementById('orderid').value;
+
+    var button = document.getElementById('pay-button');
+        
+    button.addEventListener('click', function() {
+        tossPayments.requestPayment('카드',{
+            amount: price,
+            orderId: orderid,
+            orderName: name,
+            customerName: seller,
+            successUrl: 'http://localhost:4000/success',
+            failUrl: 'http://localhost:4000/failed'
+        })
+    })
+    </script>
+
+</body>
+</html>
