@@ -4,9 +4,8 @@ const History = require('../models/history');
 require('dotenv').config();
 const axios = require('axios');
 const uuid = require("uuid").v4;
-const nodemailer = require('nodemailer');
-const { SolapiMessageService } = require('solapi');
-const messageService = new SolapiMessageService(process.env.SOLAPI_KEY, process.env.SOLAPI_SECRET_KEY);
+const sendMail = require('../util/sendMail');
+const sendSMS = require('../util/sendSMS');
 
 exports.getProduct = async (req, res, next) => {
     let rannum = Math.floor(Math.random() * 100);
@@ -62,23 +61,7 @@ exports.tossPayment = async (req, res, next) => {
         });
         await newHistory.save();
         //이메일 전송
-        let transporter = nodemailer.createTransport({
-            service: 'naver',
-            host: 'smtp.naver.com',
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.NODEMAILER_USER,
-                pass: process.env.NODEMAILER_PASS,
-            },
-        });
-        let info = await transporter.sendMail({
-            from: `hello ${process.env.NODEMAILER_USER}`,
-            to: req.session.user.email,
-            subject: 'Toss Payment Successed!',
-            text: `총금액 : ${response.totalAmount}\n 주문번호 : ${response.orderId}`,
-            html: `<span>총금액 : ${response.totalAmount}<span><br><span>주문번호 : ${response.orderId}</span>`,
-        });
+        sendMail(req.session.user.email, orderId, amount);
         res.status(200).json("send");
     }
     catch (err) {
@@ -110,6 +93,7 @@ exports.getHistory = async (req, res, next) => {
 
 exports.postSMS = async (req, res, next) => {
     const paymentKey = req.params.paymentKey;
+    const phone_number = req.session.user.phone_number;
     const paymentInfo = await History.findOne({ paymentKey: paymentKey });
     try {
         if (!paymentInfo) {
@@ -117,11 +101,7 @@ exports.postSMS = async (req, res, next) => {
             error.statusCode = 404;
             throw error;
         }
-        await messageService.send({
-            "to": req.session.user.phone_number,
-            "from": process.env.SOLAPI_NUMBER,
-            "text": `주문번호 : ${paymentInfo.orderId}\n 주문 명 : ${paymentInfo.orderName}\n 주문금액 : ${paymentInfo.totalAmount}`,
-        });
+        sendSMS(phone_number, paymentInfo.orderId, paymentInfo.orderName, paymentInfo.totalAmount);
         res.status(200).json("send message");
     }
     catch (err) {
