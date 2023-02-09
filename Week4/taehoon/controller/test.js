@@ -8,7 +8,7 @@ require('dotenv').config();
 
 exports.createUserData = async (req, res, next) => {
     const num = req.body.seed;
-    faker.seed(seed);
+    faker.seed(num);
     try {
         const users = [];
         for (let i = 0; i < num; i++) {
@@ -37,7 +37,7 @@ exports.createUserData = async (req, res, next) => {
 
 exports.createPostData = async (req, res, next) => {
     const num = req.body.seed;
-    faker.seed(seed);
+    faker.seed(num);
     const userCount = await User.count();
     try {
         if(userCount==0){

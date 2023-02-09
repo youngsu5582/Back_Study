@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+</head>
+
+<body>
+    <form method="POST" action="/v1/signup">
+    이메일 <input type="text" name="email"><br>
+    이름<input type="text" name="name"><br>
+    폰<input type="text" name="phone_number"><br>
+        <button t>회원가입</button>
+    </form>
+    <br><br>
+    <% if(!isloggedIn){ %>
+    <form method="POST" action="/v1/login">
+        이메일 <input type="text" name="email"><br>
+        <button>로그인</button>
+    </form>
+    <% }else{ %>
+        <form method="POST" action="/v1/logout">
+            <button>로그아웃</button>
+        </form>
+    <% } %>
+</body>
+
+</html>
