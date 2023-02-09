@@ -10,7 +10,7 @@ const sendSMS = require('../util/sendSMS');
 exports.getProduct = async (req, res, next) => {
     let rannum = Math.floor(Math.random() * 100);
     const post = await Product.findOne().skip(rannum);
-    const user = await User.findOne({ name: "탱탱볼" });
+    const user = await User.findOne({ name: req.session.user.name });
     try {
         if (!post || !user) {
             const error = new Error("Not Found");
