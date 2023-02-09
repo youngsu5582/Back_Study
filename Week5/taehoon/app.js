@@ -6,18 +6,17 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const app = express();
 const testRoutes = require('./routes/test');
 const paymentRoutes = require('./routes/payment');
-const MONGODB_URI =
-    'mongodb+srv://tentenball:dlxogns831~@restapi.c89hpnb.mongodb.net/back_study';
+require('dotenv').config();
 
 const store = new MongoDBStore({
-    uri: MONGODB_URI,
+    uri: process.env.MONGODB_URI,
     collection: 'sessions'
 });
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(
     session({
-      secret: 'my secret',
+      secret: process.env.SESSION_SECRET_KEY,
       resave: false,
       saveUninitialized: false,
       store: store
@@ -29,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/v1', testRoutes);
 app.use(paymentRoutes);
+
 app.use((error, req, res, next) => {
     const status = error.statusCode || 500;
     const message = error.message;
@@ -38,7 +38,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then(result => {
     app.listen(3000);
   })
