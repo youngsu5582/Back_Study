@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <script src="https://js.tosspayments.com/v1/payment"></script>
+</head>
+
+<body>
+    <input type="hidden" id="customerName" value="'<%=customerName%>'" />
+
+    판매자 : <span id="seller"><%=seller%></span> <br>
+    가격 : <span id="price"><%=price%></span> <br>
+    품명 : <span id="name"><%=name%></span> <br>
+    <button onclick="doTossPayment()"><%=price%> 결제하기</button>
+    <p>
+    <a href="/v1/toss/payments">구매목록</a>
+    <a href="/v1/logout">로그아웃</a>
+
+    <script>
+        var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+        var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+
+        function doTossPayment() {
+            var orderId = new Date().toString();
+
+            tossPayments.requestPayment('카드', { // 결제 수단 파라미터
+                // 결제 정보 파라미터
+                amount: document.getElementById('price').innerText,
+                orderId: getCurrentDate(),
+                orderName: document.getElementById('name').innerText,
+                customerName: document.getElementById('customerName').innerText,
+                successUrl: 'http://localhost:8085/v1/toss/pay',
+                failUrl: 'http://localhost:8085/v1/toss/fail',
+                })
+        }
+
+        function getCurrentDate() {
+            var date = new Date();
+            var year = date.getFullYear().toString();
+
+            var month = date.getMonth() + 1;
+            month = month < 10 ? '0' + month.toString() : month.toString();
+
+            var day = date.getDate();
+            day = day < 10 ? '0' + day.toString() : day.toString();
+
+            var hour = date.getHours();
+            hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+            var minites = date.getMinutes();
+            minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+
+            var seconds = date.getSeconds();
+            seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+            return year + month + day + hour + minites + seconds;
+        }
+    </script>
+</body>
+
+</html>
