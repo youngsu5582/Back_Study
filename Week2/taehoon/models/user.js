@@ -8,16 +8,12 @@ const User = sequelize.define('user', {
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
         primaryKey: true
-    },
+      },
     email: {
         type: Sequelize.STRING,
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    phone_number: {
         type: Sequelize.STRING,
         allowNull: false
     }

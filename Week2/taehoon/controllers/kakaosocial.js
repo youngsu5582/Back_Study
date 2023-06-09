@@ -2,9 +2,6 @@ const axios = require('axios');
 require("dotenv").config();
 let access_Token;
 exports.socialLogin = (req, res, next) => {
-    if (req.session.isloggedIn) {
-        res.redirect('/v1/auth');
-    }
     res.redirect(`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.S_API_KEY}&redirect_uri=${process.env.S_REDIRECT_URI}&response_type=code`);
 };
 
@@ -24,6 +21,7 @@ exports.socialCallback = async (req, res, next) => {
                 { 'Content-type': 'application/x-www-form-urlencoded' }
         });
         access_Token = access.data.access_token;
+        console.log(access);
         res.redirect('/v1/auth/kakao/userinfo');
     } catch (err) {
         if (!err.statusCode) {
@@ -43,8 +41,7 @@ exports.getTokenInfo = async (req, res, next) => {
         const email = author.data.kakao_account.email;
         req.session.email = email;
         req.session.name = 'KAKAO';
-        req.session.isloggedIn = true;
-        res.redirect('/v1/login/makeProduct');
+        res.redirect('/v1/auth');
     } catch (err) {
         if (!err.statusCode) {
             err.statusCode = 500;

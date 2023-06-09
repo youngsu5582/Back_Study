@@ -8,4 +8,5 @@ router.get('/login', kakaoLoginController.socialLogin);
 router.get('/callback',kakaoLoginController.socialCallback);
 router.get('/userinfo', kakaoLoginController.getTokenInfo);
 
+
 module.exports = router;
