@@ -6,7 +6,5 @@ const router = express.Router();
 
 router.post('/sessionlogin', loginController.postSessionLogin);
 router.post('/sessionverify', loginController.postSessionVerify);
-router.post('/jwtlogin', loginController.postJwtLogin);
-router.post('/jwtverify', isAuth, loginController.postJwtVerify);
-
+router.get('/makeProduct', loginController.makeProduct);
 module.exports = router;

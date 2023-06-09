@@ -11,14 +11,15 @@
 <body>
     <form method="POST" action="/v1/signup">
     이메일 <input type="text" name="email"><br>
-    이름<input type="text" name="name"><br>
-    폰<input type="text" name="phone_number"><br>
+    비밀번호<input type="text" name="name"><br>
+    전화번호<input type="text" name="phone_number"><br>
         <button t>회원가입</button>
     </form>
     <br><br>
     <% if(!isloggedIn){ %>
     <form method="POST" action="/v1/login">
         이메일 <input type="text" name="email"><br>
+        비밀번호 <input type="text" name="email"><br>
         <button>로그인</button>
     </form>
     <% }else{ %>

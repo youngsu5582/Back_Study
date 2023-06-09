@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+</head>
+
+<body>
+    <section>
+        <span>판매자 : <%= posts.seller %></span><br>
+        <span>가격 : <%= posts.price %> 원</span><br>
+        <span>품명 : <%= posts.name %></span> <br>
+        <button id="payment-button">
+            <%= posts.price%>원 결제하기
+        </button>
+    </section>
+</body>
+<script src="https://js.tosspayments.com/v1"></script>
+<script>
+    var tossPayments = TossPayments("test_ck_N5OWRapdA8d6KdMNDMRVo1zEqZKL");
+
+    var button = document.getElementById("payment-button");
+
+    button.addEventListener("click", function () {
+        tossPayments.requestPayment("카드", {
+            amount: "<%= posts.price %>",
+            orderId: "<%= orderId %>",
+            orderName: "<%= posts.name %>",
+            customerName: "<%= customerName %>",
+            successUrl: window.location.origin + "/v1/toss/success",
+            failUrl: window.location.origin + "/fail",
+        });
+    });
+</script>
+
+</html>
