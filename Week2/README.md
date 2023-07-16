@@ -32,8 +32,13 @@
 
 #### ★★★★★★★ Social Login
 #### 8. v1/auth 에 소셜 로그인을 위한 페이지를 만든다.
-#### - Internet 에 검색하면 잘 나오긴 하나 , 공식 API Docs 를 읽고 구현해보기
-https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
+`a href 를 통해 social login Page에 연결한다.` ( kakao 든 , naver 든 , google 이든 상관 X , 자기가 연결하고 싶은 Social 에 연결 )
++ Kakao : 'https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=profile_nickname,profile_image,account_email'
++ Naver : 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirectURI + '&state=' + state
+
+https://developers.kakao.com/docs/latest/ko/kakaologin/common
+#### - Internet 에 검색하면 잘 나오긴 하나 , 이번 기회에 Docs 를 읽고 이해하는 능력 기르면 좋겠음
+
 1. developers 에 들어가서 로그인을 활성화 상태로 바꾸고 redirecrt Uri를 지정한다. ( http://localhost:5000/v1/auth/callback/ )
 2. social login page 에 필요한 조건 (clientId , redirectUrl , scope ) 를 넣은채 링크를 만든다.
 3. Social Login을 진행한 후 , auth/callback 으로 query 형식으로 code가 넘어간다.
